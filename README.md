@@ -22,3 +22,9 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+### Todo
+- [ ] Improve button style
+- [ ] Disable +/- when value is zero
+- [ ] Add key listeners to allow buttons to react to their keyboard equivelant
