@@ -1,4 +1,4 @@
-# vuebmicalculator
+# Vue Simple Calculator
 
 ## Project setup
 ```
