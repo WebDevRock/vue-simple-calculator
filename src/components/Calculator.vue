@@ -20,7 +20,6 @@
     <button class="zero btn" @click="append(0)">0</button>
     <button class="btn" @click="dot">.</button>
     <button class="btn operator" @click="calculate">=</button>
-
   </div>
 </template>
 
@@ -28,69 +27,72 @@
 export default {
   data() {
     return {
-      current: '',
+      current: "",
       previous: null,
       operator: null,
-      operatorClicked: false
-
-    }
+      operatorClicked: false,
+    };
   },
   methods: {
     clear() {
-      this.current = ''
+      this.current = "";
     },
     sign() {
-      this.current = this.current.charAt(0) === '-' ?
-      this.current.slice(1) : `-${this.current}`
-
+      this.current =
+        this.current.charAt(0) === "-"
+          ? this.current.slice(1)
+          : `-${this.current}`;
     },
     percent() {
-      this.current = `${parseFloat(this.current) / 100}`
+      this.current = `${parseFloat(this.current) / 100}`;
     },
     append(num) {
-      if(this.operatorClicked) {
-        this.current = ''
-        this.operatorClicked = false
+      if (this.operatorClicked) {
+        this.current = "";
+        this.operatorClicked = false;
       }
-      this.current = `${this.current}${num}`
-
+      this.current = `${this.current}${num}`;
     },
     dot() {
-      if(this.current.indexOf('.') === -1) {
-        this.append('.')
+      if (this.current.indexOf(".") === -1) {
+        this.append(".");
       }
     },
-    divide(){
-      this.operator = (a, b) => a/b
-      this.setPrevious()
+    divide() {
+      this.operator = (a, b) => b / a;
+      // eslint-disable-next-line no-console
+      console.log(this.operator)
+      this.setPrevious();
     },
-    times(){
-      this.operator = (a, b) => a*b
-      this.setPrevious()
+    times() {
+      this.operator = (a, b) => b * a;
+      this.setPrevious();
     },
-    minus(){
-      this.operator = (a, b) => a-b
-      this.setPrevious()
+    minus() {
+      this.operator = (a, b) => b - a;
+      this.setPrevious();
     },
-    plus(){
-      this.operator = (a, b) => a+b
-      this.setPrevious()
+    plus() {
+      this.operator = (a, b) => b + a;
+      this.setPrevious();
     },
-    calculate(){
+    calculate() {
+      // eslint-disable-next-line no-console
+      console.log(this.current, this.previous)
       this.current = `${this.operator(
         parseFloat(this.current),
         parseFloat(this.previous)
-      )}`
-      this.previous = null
+      )}`;
+      this.previous = null;
     },
-    setPrevious(){
-      this.previous = this.current
-      this.operatorClicked = true
-
-    }
-  }
-
-}
+    setPrevious() {
+      this.previous = this.current;
+      // eslint-disable-next-line no-console
+      console.log(this.previous);
+      this.operatorClicked = true;
+    },
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -108,19 +110,18 @@ export default {
   background-color: #000;
   color: white;
   height: 60px;
-  padding-top: 20px
-
-  }
+  padding-top: 20px;
+}
 .zero {
   grid-column: 1 / 3;
-  background-color: blueviolet
+  background-color: blueviolet;
 }
 .btn {
   background-color: #eee;
   border: 1px solid #333;
   height: 80px;
   font-size: 40px;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .btn:hover {
@@ -129,7 +130,7 @@ export default {
 
 .operator {
   background-color: orange;
-  color: #fff
+  color: #fff;
 }
 .operator:hover {
   background-color: orange;
