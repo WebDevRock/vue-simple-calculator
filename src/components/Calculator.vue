@@ -60,8 +60,6 @@ export default {
     },
     divide() {
       this.operator = (a, b) => b / a;
-      // eslint-disable-next-line no-console
-      console.log(this.operator)
       this.setPrevious();
     },
     times() {
@@ -77,8 +75,6 @@ export default {
       this.setPrevious();
     },
     calculate() {
-      // eslint-disable-next-line no-console
-      console.log(this.current, this.previous)
       this.current = `${this.operator(
         parseFloat(this.current),
         parseFloat(this.previous)
